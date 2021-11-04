@@ -16,8 +16,8 @@ public struct PermissionConfiguration {
     let dismissButtonTitle: String
     let alertViewBackgroundColor: UIColor
     let labelColor: UIColor
-    let appOpenCount: Int
     let permissionAlertType: PermissionAlertType
+    let appOpenCount: Int
     let conditionWhenToAsk: (() -> Bool)
     
     public init(enableLabelText: String = "Please enable notifications",
@@ -25,8 +25,8 @@ public struct PermissionConfiguration {
                 dismissButtonTitle: String = "Dismiss",
                 alertViewBackgroundColor: UIColor = UIColor.white,
                 labelColor: UIColor = UIColor.darkText,
-                appOpenCount: Int = 1,
                 permissionAlertType: PermissionAlertType = .system,
+                appOpenCount: Int = 1,
                 conditionWhenToAsk: (()->Bool)? = nil
     ) {
         self.enableLabelText = enableLabelText

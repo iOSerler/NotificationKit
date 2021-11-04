@@ -19,13 +19,14 @@ public class PermissionManager: NSObject {
     
     /// publicly passed dependencies
     public weak var hostController: UIViewController?
+    public var scheduleLocalNotifications: (() -> Void)?
     
     /// dependencies injected at the initializations
     private let notificationConfig: PermissionConfiguration
     private let analytics: GenericAnalytics?
     
     /// internal dependencies
-    private var scheduleLocalNotifications: (() -> Void)?
+    
     
     /// Analytics titles for user properties and event logs
     private let buttonPressedEventLog = "NotificationManager Button Pressed"

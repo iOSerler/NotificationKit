@@ -9,14 +9,12 @@ import Foundation
 
 public struct LocalNotificationConfiguration {
     
-    let appOpenCount: Int
     let notificationTitles: [String]
     let notificationBodies: [String]
     let attachmentNames: [String]
     let daysAfterLastLaunchOnWhichToSend: [Double]
     
     public init(
-         appOpenCount: Int = 1,
          notificationTitles: [String] = ["Hello!"],
          notificationBodies: [String] = ["Haven't seen you for some time!"],
          attachmentNames: [String] = ["Thumbnail"],
@@ -30,7 +28,6 @@ public struct LocalNotificationConfiguration {
             99,129,159,189,219,249,279,309,339,369,399,429 /// then keep it monthly for the rest of the year
         ]
     ) {
-        self.appOpenCount = appOpenCount
         self.notificationTitles = notificationTitles
         self.notificationBodies = notificationBodies
         self.attachmentNames = attachmentNames
