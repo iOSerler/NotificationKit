@@ -19,8 +19,8 @@ public struct LocalNotificationConfiguration {
          notificationBodies: [String] = ["Haven't seen you for some time!"],
          attachmentNames: [String] = ["Thumbnail"],
          daysAfterLastLaunchOnWhichToSend: [Double] = [
-//            0.0001, /// FIXME: only for testing
-            1,2,3, /// send daily for first three days
+            /// the default strategy is to remind often in the beginning, then decrease the frequency.
+            1,2,3, /// start from sending daily for first three days
             5,7, /// then switch to every other day
             10,13,16,19, /// then send a notification once in three days
             26,34,41, /// then once a week

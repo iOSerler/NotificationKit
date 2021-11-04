@@ -18,7 +18,7 @@ public enum PermissionAlertType: String {
 public class PermissionManager: NSObject {
     
     /// publicly passed dependencies
-    public weak var hostController: UIViewController?
+    public var hostController: UIViewController?
     public var scheduleLocalNotifications: (() -> Void)?
     
     /// dependencies injected at the initializations
@@ -195,6 +195,7 @@ public class PermissionManager: NSObject {
         }
         
         UIView.animate(withDuration: 0.7) {
+            view.layoutIfNeeded()
             navigationView.layoutIfNeeded()
         }
     }
@@ -231,7 +232,6 @@ public class PermissionManager: NSObject {
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textColor = notificationConfig.labelColor
             label.textAlignment = .center
-            label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissAlertButtonPressed)))
             return label
         }()
         let yesAlertButton: UIButton = {
