@@ -1,43 +1,49 @@
-# NotificationKit
+# Get user permission to send notifications
 
-This package provides you with several ways to ask for user's permission to send notifications.
 
-It takes a few lines of code to that you can add to your main view controller:
+Add this code to your main ViewController:
             
         /// create a configuration
-        let config = NotificationConfiguration()
+        let config = PermissionConfiguration()
         
-        /// initiliaze mananer
-        let manager = NotificationManager(notificationConfig: config, analytics: nil)
+        /// initiliaze PermissionManager
+        let manager = PermissionManager(notificationConfig: config, analytics: nil)
         
-        /// pass your main view controller where the permission dialogue will be displayed
+        /// pass your main ViewController where to display the permission dialogue at
         manager.hostController = self
         
+        /// check the permission status and ask if needed
         manager.configureNotifications()
-        
-        
-You need local notifications? You can use it easily:
 
-        /// create a configuration
-        let config = NotificationConfiguration()
+
+# Schedule local notifications
+
+You need local notifications? You can add them easily:
+
+                /// create a configuration
+        let config = PermissionConfiguration()
         
-        /// initiliaze mananer
-        let manager = NotificationManager(notificationConfig: config, analytics: nil)
+        /// initiliaze PermissionManager
+        let manager = PermissionManager(notificationConfig: config, analytics: nil)
         
-        /// pass your main view controller where the permission dialogue will be displayed
+        /// pass your main ViewController where to display the permission dialogue at
         manager.hostController = self
         
         /// initialize the local notifications scheduler
-        let scheduleConfig = ScheduleConfiguration()
-        let scheduler = NotificationScheduler(scheduleConfig: scheduleConfig)
+        let scheduleConfig = LocalNotificationConfiguration()
+        let scheduler = LocalNotificationScheduler(scheduleConfig: scheduleConfig)
         
         /// pass the closure to the notifications manager
         manager.scheduleLocalNotifications = scheduler.scheduleNotifications()
         
         manager.configureNotifications()
 
-        
-You can also use it with the remote control package for A/B testing
+# AB test various configurations 
+
+You can also use the functionality with the remote control package for A/B testing
+
+
+## Experiment with different ways to ask for permission 
 
         let remoteConfigManager = RemoteConfigManager()
         
@@ -66,4 +72,5 @@ You can also use it with the remote control package for A/B testing
         
         RemoteConfigManager.shared.fetchRemoteConfig()
     
-Enjoy!
+## Experiment with schedules 
+
