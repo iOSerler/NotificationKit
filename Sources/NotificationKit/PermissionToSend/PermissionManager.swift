@@ -15,34 +15,31 @@ enum PermissionAlertType: String {
     case system = "System"
 }
 
-public class NotificationManager: NSObject {
+public class PermissionManager: NSObject {
     
-    private let notificationConfig: NotificationConfiguration
+    /// publicly passed dependencies
+    public weak var hostController: UIViewController?
+    
+    /// dependencies injected at the initializations
+    private let notificationConfig: PermissionConfiguration
     private let analytics: GenericAnalytics?
-
     
-    init(notificationConfig: NotificationConfiguration, analytics: GenericAnalytics?) {
+    /// internal dependencies
+    private var scheduleLocalNotifications: (() -> Void)?
+    
+    /// Analytics titles for user properties and event logs
+    private let buttonPressedEventLog = "NotificationManager Button Pressed"
+    private let alertShownEventLog = "Allow Notifications Alert Shown"
+    private let permissionAlertTypePropertyTitle = "PermissionAlertType"
+    
+    init(notificationConfig: PermissionConfiguration, analytics: GenericAnalytics?) {
         self.notificationConfig = notificationConfig
         self.analytics = analytics
-        self.scheduler = NotificationScheduler(notificationTitles: notificationConfig.notificationTitles, notificationBodies: notificationConfig.notificationBodies)
         
         super.init()
     }
     
-    /// public passed properties
-    public weak var mainController: UIViewController?
-
-    /// internal dependencies
-    private let scheduler: NotificationScheduler
-    
-    /// internal properties
-    private var circumstance = "None"
-    private let buttonPressedEventTitle = "Allow Notifications Button Pressed"
-    private let enableLabelText = "enableNotifications"
-    private let enableButtonTitle = "enable"
-    private let dismissButtonTitle = "dismiss"
-    
-    func configureNotifications(circumstance: String = "Launch") {
+    func configureNotifications() {
         
         let center  = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in
@@ -55,32 +52,24 @@ public class NotificationManager: NSObject {
             self.analytics?.setUserProperty("Notification Status", value: statusArray[statusIndex])
             
             if status == .authorized {
-                self.scheduleLocalNotifications()
+                self.scheduleLocalNotifications?()
             }
             
-            if status == .notDetermined {
-                //&& (AppHelper.shared.appOpenCount == 2 || AppHelper.shared.appOpenCount%3 == 0) {
-                self.askPermission(alertType: .system, circumstance: circumstance)
+            if status == .notDetermined
+                && self.notificationConfig.appOpenCount % 2 == 0  {
+                self.askPermission(alertType: self.notificationConfig.permissionAlertType)
             }
             
         }
         
     }
     
-    func scheduleLocalNotifications() {
-        scheduler.scheduleNotifications()
-    }
-    
-    func askPermission(alertType: PermissionAlertType, circumstance: String) {
+    func askPermission(alertType: PermissionAlertType) {
+                
+        analytics?.setUserProperty(permissionAlertTypePropertyTitle, value: alertType.rawValue)
         
-        self.circumstance = circumstance
-        
-        analytics?.setUserProperty("PermissionAlertType", value: alertType.rawValue)
-        
-        let alertShownEventTitle = "Allow Notifications Alert Shown"
-        analytics?.logEvent(alertShownEventTitle, properties: [
-            "circumstance": circumstance,
-            "PermissionAlertType": alertType.rawValue
+        analytics?.logEvent(alertShownEventLog, properties: [
+            permissionAlertTypePropertyTitle: alertType.rawValue
         ])
         
         
@@ -111,19 +100,17 @@ public class NotificationManager: NSObject {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
                 self.analytics?.logEvent(requestingPermissionEventTitle, properties: [
-                    "circumstance": self.circumstance,
                     "result": "successful"
                 ])
                 
                 self.analytics?.logEvent("NotificationPermissionGiven", properties: nil)
                 self.analytics?.setUserProperty("Notification Status", value: "allowed")
                 
-                self.scheduleLocalNotifications()
+                self.scheduleLocalNotifications?()
                 
             } else if let error = error {
                 print(error.localizedDescription)
                 self.analytics?.logEvent(requestingPermissionEventTitle, properties: [
-                    "circumstance": self.circumstance,
                     "result": "denied"
                 ])
             }
@@ -147,13 +134,13 @@ public class NotificationManager: NSObject {
         alert.addAction(yesAction)
         
         DispatchQueue.main.async {
-            self.mainController?.present(alert, animated: true, completion: nil)
+            self.hostController?.present(alert, animated: true, completion: nil)
         }
     }
     
     func showNonintrusivePermissionAlert() {
         
-        guard let navigationView = self.mainController?.navigationController?.view,
+        guard let navigationView = self.hostController?.navigationController?.view,
               let _ = self.alertViewTopConstraint else {
             return
         }
@@ -174,9 +161,8 @@ public class NotificationManager: NSObject {
     
     @objc func yesAlertButtonPressed() {
         print("yesAlertButtonPressed")
-        analytics?.logEvent(buttonPressedEventTitle, properties: [
-            "button": enableButtonTitle,
-            "circumstance": circumstance
+        analytics?.logEvent(buttonPressedEventLog, properties: [
+            "button": notificationConfig.enableButtonTitle,
         ])
         showSystemPermissionAlert()
         dismissAlert()
@@ -184,9 +170,8 @@ public class NotificationManager: NSObject {
     
     @objc func dismissAlertButtonPressed() {
         print("dismissAlertButtonPressed")
-        analytics?.logEvent(buttonPressedEventTitle, properties: [
-            "button": dismissButtonTitle,
-            "circumstance": circumstance
+        analytics?.logEvent(buttonPressedEventLog, properties: [
+            "button": notificationConfig.dismissButtonTitle,
         ])
         dismissAlert()
         
@@ -196,8 +181,8 @@ public class NotificationManager: NSObject {
         
         alertViewController.dismiss(animated: true, completion: nil)
         
-        guard let view = self.mainController?.view,
-              let navigationView = self.mainController?.navigationController?.view,
+        guard let view = self.hostController?.view,
+              let navigationView = self.hostController?.navigationController?.view,
               let _ = alertViewTopConstraint else {
             return
         }
@@ -229,8 +214,8 @@ public class NotificationManager: NSObject {
     
     func setupNonintrusiveAlertView() {
         
-        guard let view = self.mainController?.view,
-              let navigationView = self.mainController?.navigationController?.view else {
+        guard let view = self.hostController?.view,
+              let navigationView = self.hostController?.navigationController?.view else {
             return
         }
         
@@ -311,7 +296,7 @@ public class NotificationManager: NSObject {
     }
     
     func presentPermissionAlertController() {
-        self.mainController?.present(alertViewController, animated: true, completion: nil)
+        self.hostController?.present(alertViewController, animated: true, completion: nil)
     }
 
     
@@ -402,12 +387,5 @@ public class NotificationManager: NSObject {
         alertTextLabel.text = notificationConfig.enableLabelText
         yesAlertButton.setTitle(notificationConfig.enableButtonTitle, for: .normal)
         dismissAlertButton.setTitle(notificationConfig.dismissButtonTitle, for: .normal)
-    }
-}
-
-public struct NotificationKit {
-    public private(set) var text = "Hello, World!"
-
-    public init() {
     }
 }

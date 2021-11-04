@@ -6,6 +6,10 @@ final class NotificationKitTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(NotificationKit().text, "Hello, World!")
+        let config = PermissionConfiguration()
+        let manager = PermissionManager(notificationConfig: config, analytics: nil)
+        let hostVC = UIViewController()
+        manager.hostController = hostVC
+        XCTAssertNotNil(manager.hostController)
     }
 }
