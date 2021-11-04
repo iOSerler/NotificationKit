@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GenericAnalytics {
+public protocol GenericAnalytics {
     func logEvent(_ eventName: String, properties: [String:Any]?)
     func setUserProperty(_ property: String, value: Any)
 }

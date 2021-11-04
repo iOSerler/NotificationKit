@@ -12,14 +12,14 @@
 
 import UIKit
 
-struct LocalNotificationScheduler {
+public struct LocalNotificationScheduler {
     
     let scheduleConfig: LocalNotificationConfiguration
     
     private let identifierArrayKey = "notificationIdentifiers"
     internal let notificationCenter = UNUserNotificationCenter.current()
     
-    func scheduleNotifications() {
+    public func scheduleNotifications() {
         
         cancelAllNotifications()
 

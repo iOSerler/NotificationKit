@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocalNotificationConfiguration {
+public struct LocalNotificationConfiguration {
     
     let appOpenCount: Int
     let notificationTitles: [String]
@@ -15,7 +15,7 @@ struct LocalNotificationConfiguration {
     let attachmentNames: [String]
     let daysAfterLastLaunchOnWhichToSend: [Double]
     
-    init(
+    public init(
          appOpenCount: Int = 1,
          notificationTitles: [String] = ["Hello!"],
          notificationBodies: [String] = ["Haven't seen you for some time!"],

@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum PermissionAlertType: String {
+public enum PermissionAlertType: String {
     /// permissionAlertType
     case intrusive = "Intrusive"
     case nonintrusive = "Nonintrusive"
@@ -32,14 +32,14 @@ public class PermissionManager: NSObject {
     private let alertShownEventLog = "Allow Notifications Alert Shown"
     private let permissionAlertTypePropertyTitle = "PermissionAlertType"
     
-    init(notificationConfig: PermissionConfiguration, analytics: GenericAnalytics?) {
+    public init(notificationConfig: PermissionConfiguration, analytics: GenericAnalytics?) {
         self.notificationConfig = notificationConfig
         self.analytics = analytics
         
         super.init()
     }
     
-    func configureNotifications() {
+    public func configureNotifications() {
         
         let center  = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in

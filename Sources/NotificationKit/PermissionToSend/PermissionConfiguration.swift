@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-struct PermissionConfiguration {
+public struct PermissionConfiguration {
     
     let enableLabelText: String
     let enableButtonTitle: String
@@ -19,7 +19,7 @@ struct PermissionConfiguration {
     let appOpenCount: Int
     let permissionAlertType: PermissionAlertType
     
-    init(enableLabelText: String = "Please enable notifications",
+    public init(enableLabelText: String = "Please enable notifications",
          enableButtonTitle:String = "Enable",
          dismissButtonTitle: String = "Dismiss",
          alertViewBackgroundColor: UIColor = UIColor.white,

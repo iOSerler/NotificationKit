@@ -20,7 +20,7 @@ Add this code to your main ViewController:
 
 You need local notifications? You can add them easily:
 
-                /// create a configuration
+        /// create a configuration
         let config = PermissionConfiguration()
         
         /// initiliaze PermissionManager
