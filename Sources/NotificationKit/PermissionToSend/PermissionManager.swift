@@ -18,7 +18,7 @@ public enum PermissionAlertType: String {
 public class PermissionManager: NSObject {
     
     /// publicly passed dependencies
-    public var hostController: UIViewController?
+    public weak var hostController: UIViewController?
     public var scheduleLocalNotifications: (() -> Void)?
     
     /// dependencies injected at the initializations
