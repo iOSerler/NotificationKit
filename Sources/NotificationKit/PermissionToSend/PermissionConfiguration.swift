@@ -18,14 +18,16 @@ public struct PermissionConfiguration {
     let labelColor: UIColor
     let appOpenCount: Int
     let permissionAlertType: PermissionAlertType
+    let conditionWhenToAsk: (() -> Bool)
     
     public init(enableLabelText: String = "Please enable notifications",
-         enableButtonTitle:String = "Enable",
-         dismissButtonTitle: String = "Dismiss",
-         alertViewBackgroundColor: UIColor = UIColor.white,
-         labelColor: UIColor = UIColor.darkText,
-         appOpenCount: Int = 1,
-         permissionAlertType: PermissionAlertType = .system
+                enableButtonTitle:String = "Enable",
+                dismissButtonTitle: String = "Dismiss",
+                alertViewBackgroundColor: UIColor = UIColor.white,
+                labelColor: UIColor = UIColor.darkText,
+                appOpenCount: Int = 1,
+                permissionAlertType: PermissionAlertType = .system,
+                conditionWhenToAsk: (()->Bool)? = nil
     ) {
         self.enableLabelText = enableLabelText
         self.enableButtonTitle = enableButtonTitle
@@ -34,5 +36,10 @@ public struct PermissionConfiguration {
         self.labelColor = labelColor
         self.appOpenCount = appOpenCount
         self.permissionAlertType = permissionAlertType
+        if let conditionWhenToAsk = conditionWhenToAsk {
+            self.conditionWhenToAsk = conditionWhenToAsk
+        } else {
+            self.conditionWhenToAsk = { appOpenCount % 2 == 1 }
+        }
     }
 }

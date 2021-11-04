@@ -56,7 +56,7 @@ public class PermissionManager: NSObject {
             }
             
             if status == .notDetermined
-                && self.notificationConfig.appOpenCount % 2 == 0  {
+                &&  self.notificationConfig.conditionWhenToAsk() {
                 self.askPermission(alertType: self.notificationConfig.permissionAlertType)
             }
             
