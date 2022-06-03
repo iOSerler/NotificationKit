@@ -1,0 +1,9 @@
+{
+    "id": "standard",
+    "enableLabelText": "Please enable notifications",
+    "enableButtonTitle": "Enable",
+    "dismissButtonTitle": "Dismiss",
+    "alertViewHexColor": "#FFFFF",
+    "labelHexColor": "#00000",
+    "permissionAlertType": "system"
+}

@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07EF62512848084D00A34F8A /* NotificationKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62502848084D00A34F8A /* NotificationKit.swift */; };
+		07EF62682848086300A34F8A /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62572848086300A34F8A /* Protocols.swift */; };
+		07EF62692848086300A34F8A /* NotificationModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62582848086300A34F8A /* NotificationModuleBuilder.swift */; };
+		07EF626A2848086300A34F8A /* UISwitchWithIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF625A2848086300A34F8A /* UISwitchWithIndexPath.swift */; };
+		07EF626B2848086300A34F8A /* SwitchableControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF625B2848086300A34F8A /* SwitchableControlCell.swift */; };
+		07EF626C2848086300A34F8A /* PermissionDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF625C2848086300A34F8A /* PermissionDialogueView.swift */; };
+		07EF626D2848086300A34F8A /* ControlPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF625D2848086300A34F8A /* ControlPanelController.swift */; };
+		07EF626E2848086300A34F8A /* ControlPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF625F2848086300A34F8A /* ControlPanelPresenter.swift */; };
+		07EF626F2848086300A34F8A /* PermissionDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62612848086300A34F8A /* PermissionDialogue.swift */; };
+		07EF62702848086300A34F8A /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62622848086300A34F8A /* ControlPanel.swift */; };
+		07EF62712848086300A34F8A /* LocalScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62632848086300A34F8A /* LocalScheduler.swift */; };
+		07EF62722848086300A34F8A /* LocalSchedulerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62652848086300A34F8A /* LocalSchedulerService.swift */; };
+		07EF62732848086300A34F8A /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62662848086300A34F8A /* StorageService.swift */; };
+		07EF62742848086300A34F8A /* PermissionDialogueService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF62672848086300A34F8A /* PermissionDialogueService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		07EF624B2848084D00A34F8A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		07EF624D2848084D00A34F8A /* libNotificationKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNotificationKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		07EF62502848084D00A34F8A /* NotificationKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKit.swift; sourceTree = "<group>"; };
+		07EF62572848086300A34F8A /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		07EF62582848086300A34F8A /* NotificationModuleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModuleBuilder.swift; sourceTree = "<group>"; };
+		07EF625A2848086300A34F8A /* UISwitchWithIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISwitchWithIndexPath.swift; sourceTree = "<group>"; };
+		07EF625B2848086300A34F8A /* SwitchableControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchableControlCell.swift; sourceTree = "<group>"; };
+		07EF625C2848086300A34F8A /* PermissionDialogueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionDialogueView.swift; sourceTree = "<group>"; };
+		07EF625D2848086300A34F8A /* ControlPanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlPanelController.swift; sourceTree = "<group>"; };
+		07EF625F2848086300A34F8A /* ControlPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlPanelPresenter.swift; sourceTree = "<group>"; };
+		07EF62612848086300A34F8A /* PermissionDialogue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionDialogue.swift; sourceTree = "<group>"; };
+		07EF62622848086300A34F8A /* ControlPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlPanel.swift; sourceTree = "<group>"; };
+		07EF62632848086300A34F8A /* LocalScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalScheduler.swift; sourceTree = "<group>"; };
+		07EF62652848086300A34F8A /* LocalSchedulerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSchedulerService.swift; sourceTree = "<group>"; };
+		07EF62662848086300A34F8A /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		07EF62672848086300A34F8A /* PermissionDialogueService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionDialogueService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07EF624A2848084D00A34F8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07EF62442848084D00A34F8A = {
+			isa = PBXGroup;
+			children = (
+				07EF624F2848084D00A34F8A /* NotificationKit */,
+				07EF624E2848084D00A34F8A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07EF624E2848084D00A34F8A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07EF624D2848084D00A34F8A /* libNotificationKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		07EF624F2848084D00A34F8A /* NotificationKit */ = {
+			isa = PBXGroup;
+			children = (
+				07EF62502848084D00A34F8A /* NotificationKit.swift */,
+				07EF62602848086300A34F8A /* Model */,
+				07EF62582848086300A34F8A /* NotificationModuleBuilder.swift */,
+				07EF625E2848086300A34F8A /* Presenter */,
+				07EF62572848086300A34F8A /* Protocols.swift */,
+				07EF62642848086300A34F8A /* Service */,
+				07EF62592848086300A34F8A /* View */,
+			);
+			path = NotificationKit;
+			sourceTree = "<group>";
+		};
+		07EF62592848086300A34F8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07EF625A2848086300A34F8A /* UISwitchWithIndexPath.swift */,
+				07EF625B2848086300A34F8A /* SwitchableControlCell.swift */,
+				07EF625C2848086300A34F8A /* PermissionDialogueView.swift */,
+				07EF625D2848086300A34F8A /* ControlPanelController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		07EF625E2848086300A34F8A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				07EF625F2848086300A34F8A /* ControlPanelPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		07EF62602848086300A34F8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07EF62612848086300A34F8A /* PermissionDialogue.swift */,
+				07EF62622848086300A34F8A /* ControlPanel.swift */,
+				07EF62632848086300A34F8A /* LocalScheduler.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		07EF62642848086300A34F8A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				07EF62652848086300A34F8A /* LocalSchedulerService.swift */,
+				07EF62662848086300A34F8A /* StorageService.swift */,
+				07EF62672848086300A34F8A /* PermissionDialogueService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07EF624C2848084D00A34F8A /* NotificationKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07EF62542848084D00A34F8A /* Build configuration list for PBXNativeTarget "NotificationKit" */;
+			buildPhases = (
+				07EF62492848084D00A34F8A /* Sources */,
+				07EF624A2848084D00A34F8A /* Frameworks */,
+				07EF624B2848084D00A34F8A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationKit;
+			productName = NotificationKit;
+			productReference = 07EF624D2848084D00A34F8A /* libNotificationKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07EF62452848084D00A34F8A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					07EF624C2848084D00A34F8A = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 07EF62482848084D00A34F8A /* Build configuration list for PBXProject "NotificationKit" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 07EF62442848084D00A34F8A;
+			productRefGroup = 07EF624E2848084D00A34F8A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07EF624C2848084D00A34F8A /* NotificationKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07EF62492848084D00A34F8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07EF626F2848086300A34F8A /* PermissionDialogue.swift in Sources */,
+				07EF62722848086300A34F8A /* LocalSchedulerService.swift in Sources */,
+				07EF62512848084D00A34F8A /* NotificationKit.swift in Sources */,
+				07EF626D2848086300A34F8A /* ControlPanelController.swift in Sources */,
+				07EF62692848086300A34F8A /* NotificationModuleBuilder.swift in Sources */,
+				07EF626B2848086300A34F8A /* SwitchableControlCell.swift in Sources */,
+				07EF626C2848086300A34F8A /* PermissionDialogueView.swift in Sources */,
+				07EF62732848086300A34F8A /* StorageService.swift in Sources */,
+				07EF62702848086300A34F8A /* ControlPanel.swift in Sources */,
+				07EF62682848086300A34F8A /* Protocols.swift in Sources */,
+				07EF626A2848086300A34F8A /* UISwitchWithIndexPath.swift in Sources */,
+				07EF62712848086300A34F8A /* LocalScheduler.swift in Sources */,
+				07EF62742848086300A34F8A /* PermissionDialogueService.swift in Sources */,
+				07EF626E2848086300A34F8A /* ControlPanelPresenter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		07EF62522848084D00A34F8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		07EF62532848084D00A34F8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07EF62552848084D00A34F8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07EF62562848084D00A34F8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07EF62482848084D00A34F8A /* Build configuration list for PBXProject "NotificationKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07EF62522848084D00A34F8A /* Debug */,
+				07EF62532848084D00A34F8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07EF62542848084D00A34F8A /* Build configuration list for PBXNativeTarget "NotificationKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07EF62552848084D00A34F8A /* Debug */,
+				07EF62562848084D00A34F8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 07EF62452848084D00A34F8A /* Project object */;
+}
