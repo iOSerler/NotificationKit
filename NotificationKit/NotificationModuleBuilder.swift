@@ -15,7 +15,7 @@ public final class NotificationModuleBuilder {
         if let controlPanel = controlPanel {
             panelSections = controlPanel
         } else {
-            panelSections = StorageService().getControlPanel(from: "DefaultControlPanel")
+            panelSections = StorageService().getControlPanel()
         }
         
         var localScheduler: LocalScheduler?
@@ -23,7 +23,7 @@ public final class NotificationModuleBuilder {
         if let notificationScheduler = notificationScheduler {
             localScheduler = notificationScheduler
         } else {
-            localScheduler = StorageService().getLocalScheduler(from: "DefaultLocalScheduler")
+            localScheduler = StorageService().getLocalScheduler()
         }
         
         self.presenter = ControlPanelPresenter(panelSections: panelSections,

@@ -6,61 +6,41 @@ struct StorageService {
         case noFilePathError(String)
     }
     
-    func getControlPanel(from fileName: String) -> [ControlPanelSection] {
+    func getControlPanel() -> [ControlPanelSection] {
         
-        if let controls: [ControlPanelSection] = decodeJson(at: fileName)  {
-            return controls
-        }
+        var controlPanel = [ControlPanelSection]()
+        let defaultControl = ControlPanelSection(id: "enableNotifications",
+                                                 title: "Enable Notifications",
+                                                 type: "switchable",
+                                                 items: [])
         
-        return []
+        controlPanel.append(defaultControl)
+        
+        return controlPanel
     }
     
-    func getPermissionDialogue(from fileName: String) -> PermissionDialogue? {
-        let permissionConfiguration: PermissionDialogue = decodeJson(at: fileName)
+    func getPermissionDialogue() -> PermissionDialogue {
+        let permissionConfiguration = PermissionDialogue(id: "standard",
+                                                         enableLabelText: "Please enable notifications",
+                                                         enableButtonTitle: "Enable",
+                                                         dismissButtonTitle: "Dismiss",
+                                                         alertViewHexColor: "#FFFFF",
+                                                         labelHexColor: "#00000",
+                                                         permissionAlertType: "system")
         return permissionConfiguration
     }
     
-    func getLocalScheduler(from fileName: String) -> LocalScheduler? {
-        let localNotificationConfiguration: LocalScheduler = decodeJson(at: fileName)
+    func getLocalScheduler() -> LocalScheduler {
+        let localNotificationConfiguration = LocalScheduler(id: "standard",
+                                                            titles: ["Hello!"],
+                                                            bodies: ["Let's use the app."],
+                                                            attachmentNames: ["Thumbnail"],
+                                                            schedule: [1,2,3,5,7,10,13,16,19,26,34,41,55,69,99,129,159,189,219,249,279,309,339,369,399,429])
+        // The default strategy is to remind often in the beginning, then decrease the frequency.
+        // start from sending daily for first three days. then switch to every other day.
+        // then send a notification once in three day. then once a wee. then every other wee.
+        // then keep it monthly for the rest of the year."
         return localNotificationConfiguration
     }
-        
-    func decodeJson<T: Decodable> (at path: String) -> T {
-
-        var result: T!
-        print("path:", path)
-        
-        do {
-            
-            let filePath: URL
-            if let mainFilePath = Bundle.main.url(forResource: path, withExtension: "json") {
-                filePath = mainFilePath
-            } else {
-                throw StorageError.noFilePathError("Couldn't initialize the filePath")
-            }
-            
-            print("filePath:", filePath)
-            
-            let data = try Data(contentsOf: filePath)
-            print("pathData:", data)
-            result = try JSONDecoder().decode(T.self, from: data)
-        } catch let DecodingError.dataCorrupted(context) {
-            print(context)
-        } catch let DecodingError.keyNotFound(key, context) {
-            print("Key '\(key)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch let DecodingError.valueNotFound(value, context) {
-            print("Value '\(value)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch let DecodingError.typeMismatch(type, context)  {
-            print("Type '\(type)' mismatch:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch {
-            print("error: ", error)
-        }
-        
-        return result
-    }
-    
 }
 
