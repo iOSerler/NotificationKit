@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "local", :tag => "#{spec.version}" }
 
   spec.prefix_header_file = false
-  spec.ios.deployment_target = 10.0
+  spec.ios.deployment_target = 9.0
   
   spec.source_files  = "Classes", "Classes/**/*.{h,m}"
   spec.exclude_files = "Classes/Exclude"

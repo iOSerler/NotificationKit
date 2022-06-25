@@ -7,7 +7,6 @@ public final class NotificationModuleBuilder {
     
     
     public init(controlPanel: [ControlPanelSection]? = nil,
-                notificationScheduler: LocalScheduler? = nil,
                 analytics: GenericAnalytics? = nil) {
           
         let panelSections: [ControlPanelSection]
@@ -18,17 +17,10 @@ public final class NotificationModuleBuilder {
             panelSections = StorageService().getControlPanel()
         }
         
-        var localScheduler: LocalScheduler?
-        
-        if let notificationScheduler = notificationScheduler {
-            localScheduler = notificationScheduler
-        } else {
-            localScheduler = StorageService().getLocalScheduler()
-        }
-        
-        self.presenter = ControlPanelPresenter(panelSections: panelSections,
-                                               localScheduler: localScheduler,
-                                               analytics: analytics)
+        self.presenter = ControlPanelPresenter(
+            panelSections: panelSections,
+            analytics: analytics
+        )
                                                
         self.view = ControlPanelController(output: presenter)
         presenter.view = view

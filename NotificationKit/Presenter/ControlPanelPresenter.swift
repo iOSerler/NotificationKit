@@ -16,19 +16,12 @@ public final class ControlPanelPresenter {
     weak var view: NotificationViewInput?
     
     init(panelSections: [ControlPanelSection],
-         localScheduler: LocalScheduler? = nil,
          analytics: GenericAnalytics? = nil) {
         
         self.panelSections = panelSections
         self.analytics = analytics
         
         self.permissionService = PermissionDialogueService(analytics: analytics)
-        
-        if let localScheduler = localScheduler {
-
-            permissionService.scheduleLocalNotifications = LocalSchedulerService(config: localScheduler).scheduleNotifications
-            
-        }
     }
     
     private func toggleItemState(itemId: String) {
@@ -46,9 +39,7 @@ public final class ControlPanelPresenter {
         guard itemId == "enableNotifications" else {return}
         
         if switchState {
-            permissionService.configureNotifications()
-        } else {
-            LocalSchedulerService.cancelAllNotifications()
+            permissionService.requestPermission()
         }
         
     }

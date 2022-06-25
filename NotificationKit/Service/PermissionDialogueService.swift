@@ -22,9 +22,11 @@ public class PermissionDialogueService: NSObject {
                                        nondeterminedCompletion: @escaping () -> Void,
                                        deniedCompletion: @escaping () -> Void) {
         
+        guard #available(iOS 10.0, *) else {return}
+        
         let center  = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in
-
+            
             let status = settings.authorizationStatus
             
             /// log user property
@@ -43,15 +45,15 @@ public class PermissionDialogueService: NSObject {
                 break
             }
         }
-            
+        
         
     }
     
-    public func configureNotifications() {
+    public func requestPermission() {
         
         getAuthorizationStatus(
             authorizedCompletion: {
-                self.scheduleLocalNotifications?()
+                /// success
             },
             nondeterminedCompletion: {
                 self.showSystemPermissionAlert()
@@ -59,6 +61,7 @@ public class PermissionDialogueService: NSObject {
             deniedCompletion: {
                 if let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) {
                     DispatchQueue.main.async {
+                        guard #available(iOS 10.0, *) else {return}
                         UIApplication.shared.open(appSettings)
                     }
                 }
@@ -71,6 +74,8 @@ public class PermissionDialogueService: NSObject {
         
         let requestingPermissionEventTitle = "Requesting Permission for Notifications"
         
+        guard #available(iOS 10.0, *) else {return}
+
         let center  = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
